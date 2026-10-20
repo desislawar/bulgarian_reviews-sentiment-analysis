@@ -39,7 +39,7 @@ The preprocessing for the baseline projects is identical. It consists of the fol
 |------------------------ |-------------- |-------------- |
 | **ngram_range**         |(2,7)          |(1,7)          |
 | **C**                   |3.0            |0.3            | 
-| **class weight[0, 1]**  |0: 3.0, 1: 1.0 |0: 3.0, 1: 1.0}|
+| **class weight{0, 1}**  |0: 3.0, 1: 1.0 |0: 3.0, 1: 1.0}|
 | **decision values**     |0.53999        | 0.01001       |
 
 ## Transformer Fine-Tuning
