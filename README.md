@@ -66,9 +66,9 @@ Fine-tuning was performed using Pytorch. Here a different set of hyperparameters
 
 Class specific results: 
 
-|Metric / Class           |LR     |LR     |SVM    |       |
+|Metric / Class           |LR     |       |SVM    |       |
 --------------------------|-------|-------|-------|-------|
-|                         |0      |1      |0      |1      |
+| Clas                    |0      |1      |0      |1      |
 | Precision               |0.8328 |0.9573 |0.8607 |0.9548 |
 | Recall                  |0.8378 |0.9573 |0.8201 |0.9663 | 
 | F1                      |0.8353 |0.9580 |0.8399 |0.9605 |
