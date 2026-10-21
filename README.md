@@ -35,7 +35,7 @@ Each end-to-end model workflow is serialized as a unified pipeline object.
 ## Baseline models
 The preprocessing for the baseline projects is identical. It consists of the following actions - lowercasing, whitespace trimming and reduction. The **ngram_range**, **n-grams lenght**, **regularization parameter** and **custom class weight** are tuned via **GridSearch** and out-of-fold predicted probabilities are generated for predicted probability/decision score in order to maximize macro averaged f-1 score. Here are the objectives for both baseline models: 
 
-|                         |LR             |SVM            |
+|Hyperparameters          |LR             |SVM            |
 |------------------------ |-------------- |-------------- |
 | **ngram_range**         |(2,7)          |(1,7)          |
 | **C**                   |3.0            |0.3            | 
@@ -43,9 +43,24 @@ The preprocessing for the baseline projects is identical. It consists of the fol
 | **decision values**     |0.53999        | 0.01001       |
 
 ## Transformer Fine-Tuning
-Here the approach differs as here a fine-tuning on a pretrained multilingual transofrmer is performed. Unlike TF-IDF, transformer representations incorporate contextual information, which alllows the model to represent words differently depending on their surrounding text. Fine-tuning was performed using Pytorch. Here a different set of hyperparameters is optimized - **learning rate**, **number of training epochs**, **weight_decay** again with the objective to maximize average f1_macro. The following values are assigned:
-|                         |value          |
+The approach differs as here a fine-tuning on a pretrained multilingual transofrmer is performed. 
+Unlike TF-IDF, transformer representations incorporate contextual information, which alllows the model to represent words differently depending on their surrounding text. 
+Fine-tuning was performed using Pytorch. Here a different set of hyperparameters is optimized - **learning rate**, **number of training epochs**, **weight_decay** again with the objective to maximize average f1_macro. Under this condition, the following values were selected for the hyperparameters:
+
+|Hyperparameters          |value          |
 |------------------------ |-------------- |
 | **learning rate**       |2e-05          |
 | **num_train_epochs**    |3.0            |
 | **weight decay**        |0.01           |
+
+# Experimental Results 
+
+## Baseline 
+
+|Metrics                  |LR             |SVM            |
+|------------------------ |-------------- |-------------- |
+| accuracy                |0.9331         |0.9366         |
+| macro avg f1-score      |0.8966         |0.9002         | 
+
+| confusion matrix        |[[ 284   55]   |[[ 278   61]
+                           [  57 1277]]   |[  45 1289]]   |
