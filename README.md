@@ -35,12 +35,12 @@ Each end-to-end model workflow is serialized as a unified pipeline object.
 ## Baseline models
 The preprocessing for the baseline projects is identical. It consists of the following actions - lowercasing, whitespace trimming and reduction. The **ngram_range**, **n-grams lenght**, **regularization parameter** and **custom class weight** are tuned via **GridSearch** and out-of-fold predicted probabilities are generated for predicted probability/decision score in order to maximize macro averaged f-1 score. Here are the objectives for both baseline models: 
 
-|Hyperparameters          |LR             |SVM            |
-|------------------------ |-------------- |-------------- |
-| **ngram_range**         |(2,7)          |(1,7)          |
-| **C**                   |3.0            |0.3            | 
-| **class weight{0, 1}**  |0: 3.0, 1: 1.0 |0: 3.0, 1: 1.0}|
-| **decision values**     |0.53999        | 0.01001       |
+|Hyperparameters          |LR             |SVM               |
+|------------------------ |---------------- |--------------- |
+| **ngram_range**         |(2,7)            |(1,7)           |
+| **C**                   |3.0              |0.3             | 
+| **class weight{0, 1}**  |{0: 3.0, 1: 1.0} |{0: 3.0, 1: 1.0}|
+| **decision values**     |0.53999          | 0.01001        |
 
 ## Transformer Fine-Tuning
 The approach differs as here a fine-tuning on a pretrained multilingual transofrmer is performed. 
@@ -73,6 +73,16 @@ Class specific results:
 | Recall                  |0.8378 |0.9573 |0.8201 |0.9663 | 
 | F1                      |0.8353 |0.9580 |0.8399 |0.9605 |
 
+Confusion matrices for both baselines:
+
+1. LR
+<img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/8cc08e2e-3457-486e-868a-a7c4887d30aa" />
+
+3. SVM
+<img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/eec98631-339b-4c39-9037-9c5554a66b24" />
+
+
+
 The overall accuracy for both baseline models exceeded 93% but the breakdown by class revealed the stark performance disparity between the two classes. This underlines the importance of class-specific metrics and macro-f1 when handling class imbalance data. Of course, there are specific techniques that could tackle such obstacles but given the colorful language used by users in movie reviews, a cautious and well-thought through approach is advised when applying methods to address class imbalance problems. :) 
 
 ## Transformer Results 
@@ -90,4 +100,6 @@ Class specific results:
 | Precision               |0.9327 |0.9647 |
 | Recall                  |0.8584 |0.9843 |
 | F1                      |0.8940 |0.9744 |
+
+Confusion matrix
 <img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/cdee090d-a1ed-4353-90bd-78d691b29903" />
