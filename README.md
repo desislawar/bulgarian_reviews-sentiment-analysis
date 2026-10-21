@@ -61,6 +61,5 @@ Fine-tuning was performed using Pytorch. Here a different set of hyperparameters
 |------------------------ |-------------- |-------------- |
 | accuracy                |0.9331         |0.9366         |
 | macro avg f1-score      |0.8966         |0.9002         | 
-
 | confusion matrix        |[[ 284   55]   |[[ 278   61]
                            [  57 1277]]   |[  45 1289]]   |
