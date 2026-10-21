@@ -59,7 +59,17 @@ Fine-tuning was performed using Pytorch. Here a different set of hyperparameters
 
 |Metrics                  |LR             |SVM            |
 |------------------------ |-------------- |-------------- |
-| accuracy                |0.9331         |0.9366         |
-| macro avg f1-score      |0.8966         |0.9002         | 
-| confusion matrix        |[[ 284   55]   |[[ 278   61]
-                           [  57 1277]]   |[  45 1289]]   |
+| Accuracy                |0.9331         |0.9366         |
+| Macro-F1                |0.8966         |0.9002         | 
+| Macro Precision         |0.8958         |0.9077         |
+| Macro Recall            |0.8975         |0.8932         |
+
+Class specific results: 
+
+|Metric / Class           |LR             |SVM            |
+--------------------------|-------|-------|-------|-------|
+|                         |0      |1      |0      |1      |
+|------------------------ |-------------- |-------------- |
+| Precision               |0.8328 |0.9573 |0.8607 |0.9548 |
+| Recall                  |0.8378 |0.9573 |0.8201 |0.9663 | 
+| F1                      |0.8353 |0.9580 |0.8399 |0.9605 |
