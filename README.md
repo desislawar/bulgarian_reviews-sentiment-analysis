@@ -76,12 +76,11 @@ Class specific results:
 Confusion matrices for both baselines:
 
 1. LR
-<img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/8cc08e2e-3457-486e-868a-a7c4887d30aa" />
-
-3. SVM
-<img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/eec98631-339b-4c39-9037-9c5554a66b24" />
+<img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/98003a50-d851-45fe-86f7-6cf9981b400e" />
 
 
+2. SVM
+<img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/a3254a6f-e7ec-489c-bcdc-4c9dd7f23d17" />
 
 The overall accuracy for both baseline models exceeded 93% but the breakdown by class revealed the stark performance disparity between the two classes. This underlines the importance of class-specific metrics and macro-f1 when handling class imbalance data. Of course, there are specific techniques that could tackle such obstacles but given the colorful language used by users in movie reviews, a cautious and well-thought through approach is advised when applying methods to address class imbalance problems. :) 
 
@@ -101,5 +100,10 @@ Class specific results:
 | Recall                  |0.8584 |0.9843 |
 | F1                      |0.8940 |0.9744 |
 
-Confusion matrix
+Confusion matrix:
+
 <img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/cdee090d-a1ed-4353-90bd-78d691b29903" />
+
+# Error Analysis
+
+The manual inspection of false-positives and false-negatives from the baseline models shed light to the limitations of such feature extraction method - the context blindness. Because these algorithms evalueate words independently, they lack understanding how surrounding words shape the general attitude within the reviews. On the other hand w
