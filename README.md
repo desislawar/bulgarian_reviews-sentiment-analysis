@@ -110,3 +110,12 @@ The manual inspection of false-positives and false-negatives from the baseline m
 
 Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors, followed by general model limitation(23.2%) and potentially incorrect reference labels(17.4%). Notably, 15 of the 16 cases classified as general model limitation were false positives. 
 
+# Future Improvement
+Ensemble models: The confusion matrices for the two baseline models SVM and LR show something quite interesting. With SVM more negative reviews were incorrectly classifies as positive, while with LR more positive reviews were classified as negative. Although both models received identical TF-IDF in order to minimize the loss function they learned different coefficients, interceps and decision boundary. So a combination of both via soft voting might improve the metrics we examined earlier. 
+
+Also during the EDA it was noticed that the emoji usage is more frequently in a combination with negative negation, so maybe Emoji-Aware TF-IDF could be examined. 
+
+
+# Licence 
+This project is licensed under the MIT License.
+
