@@ -107,4 +107,5 @@ Confusion matrix:
 # Error Analysis
 
 The manual inspection of false-positives and false-negatives from the baseline models shed light to the limitations of such feature extraction method - the context blindness. Because these algorithms evalueate words independently, they lack understanding how surrounding words shape the general attitude within the reviews.
-Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors. 
+Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors, followed by model limitation(23.2%) and potentially incorrect reference labels(17.4%). Notably, 1
+
