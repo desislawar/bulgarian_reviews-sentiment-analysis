@@ -21,26 +21,29 @@ The dataset comes into three splits:
 
 An initial examination of the training subset revealed a substantial class imbalance in favor of the positive reviews as follows:
 
-|Review         |        Samples|
-|-------------- |-------------- |
-| Positive      |          4,587|
-| Negative      |            825|
+|Review           |        Samples|
+|---------------- |-------------- |
+| Positive(1)     |          4,587|
+| Negative(0)     |            825|
 
 This imbalace motivated the use of class-weighted training and macro averaged F1-score as trustworthy metrics for the purpose of this project. 
 
 # Methodology
 
-Each end-to-end model workflow is serialized as a unified scikit-learn pipeline object.
-
 ## Baseline models
-The preprocessing for the baseline projects is identical. It consists of the following actions - lowercasing, whitespace trimming and reduction. The **ngram_range**, **regularization parameter** and **custom class weight** are tuned via **GridSearch**. Here are the objectives for both baseline models: 
+Two traditional ML classifiers were evaluated: Logistic Regression(LR) and Linear Support Vector Machine (SVM). 
 
-|Hyperparameters                            |LR               |SVM             |
-|------------------------------------------ |---------------- |--------------- |
-| **ngram_range**                           |(2,7)            |(1,7)           |
-| **C**                                     |3.0              |0.3             | 
-| **class weight{0, 1}**                    |{0: 3.0, 1: 1.0} |{0: 3.0, 1: 1.0}|
-| **predicted probability/decision score**  |0.53999          | 0.01001        |
+Both models were implemented using scikit-learn pipelines combining TF-IDF vectorization of character n-grams with a linear classifier. Text preprocessing consisted of lowercasting, trimming leading and trailing whitespace, and normalizing consecutive whitespace characters. 
+
+Hyperparameter selection was performed using grid search with stratified 5-fold cross-validation, optimizing macro-averaged F1-score. The search included TF-IDF n-gram configurations, regularization strenght, and class weights. Following hyperparameter selection, out-of-fold
+
+
+|Hyperparameters                           |LR               |SVM             |
+|------------------------------------------|---------------- |--------------- |
+|**ngram_range**                           |(2,7)            |(1,7)           |
+|**C**                                     |3.0              |0.3             | 
+|**class weight{0, 1}**                    |{0: 3.0, 1: 1.0} |{0: 3.0, 1: 1.0}|
+|**predicted probability/decision score**  |0.53999          | 0.01001        |
 
 ## Transformer Fine-Tuning
 The approach differs as here a fine-tuning on a pretrained multilingual transofrmer is performed. 
