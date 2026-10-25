@@ -98,10 +98,10 @@ The manual inspection of false-positives and false-negatives from the baseline m
 Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors, followed by general model limitation(23.2%) and potentially incorrect reference labels(17.4%). Notably, 15 of the 16 cases classified as general model limitation were false positives. 
 
 # Future Improvement
- # Ensemble models
+1. Ensemble models
 The LR and Linear SVM classifiers exhibited different error distributions. While SVM generated more false positives, LR produced more false negatives. Although both models used TF-IDF character n-gram representations and identicall class weights, they employed different selected feature configuration, resulting in different learned decision boundaries. Hence a potential direction for further investigation on the baseline is ensemble learning. An initial experiment could measure the overlap between the misclassified examples to determine whether the models make siffuciently complementary errors. Then probability calibration and soft voting could be explored in order to improve the classification performance. 
 
- # Emoji-Aware Feature Engineering 
+2. Emoji-Aware Feature Engineering 
 EDA suggesed, that the emoji usage is more frequently in a combination with negative negation, so maybe Emoji-Aware TF-IDF could be examined as possible extension.
 
 
