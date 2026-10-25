@@ -35,20 +35,22 @@ Two traditional ML classifiers were evaluated: Logistic Regression(LR) and Linea
 
 Both models were implemented using scikit-learn pipelines combining TF-IDF vectorization of character n-grams with a linear classifier. Text preprocessing consisted of lowercasting, trimming leading and trailing whitespace, and normalizing consecutive whitespace characters. 
 
-Hyperparameter selection was performed using grid search with stratified 5-fold cross-validation, optimizing macro-averaged F1-score. The search included TF-IDF n-gram configurations, regularization strenght, and class weights. Following hyperparameter selection, out-of-fold
+Hyperparameter selection was performed using grid search with stratified 5-fold cross-validation, optimizing macro-averaged F1-score. The search included TF-IDF n-gram configurations, regularization strenght, and class weights. Following hyperparameter selection, out-of-fold predictions were generated from the training set to optimize the classification decision threshold with macro-F1 as the objective. 
 
+The selected configurations were: 
 
 |Hyperparameters                           |LR               |SVM             |
 |------------------------------------------|---------------- |--------------- |
 |**ngram_range**                           |(2,7)            |(1,7)           |
 |**C**                                     |3.0              |0.3             | 
 |**class weight{0, 1}**                    |{0: 3.0, 1: 1.0} |{0: 3.0, 1: 1.0}|
-|**predicted probability/decision score**  |0.53999          | 0.01001        |
+|**predicted probability/decision score**  |0.54             | 0.01           |
 
 ## Transformer Fine-Tuning
-The approach differs as here a fine-tuning on a pretrained multilingual transofrmer is performed. 
-Unlike TF-IDF, transformer representations incorporate contextual information, which alllows the model to represent words differently depending on their surrounding text. 
-Fine-tuning was performed using Pytorch. Here a different set of hyperparameters is optimized - **learning rate**, **number of training epochs**, **weight_decay** again with the objective to maximize average f1_macro. Under this condition, the following values were selected for the hyperparameters:
+The second approach differs as it involvs a pretrained multilingual transofrmer is performed. 
+Unlike TF-IDF representation, transformer model generate contextual contextual representations in which token representations deend on the surrounding text. 
+
+Fine-tuning was performed using Pytorch. The configuration included tuning the **learning rate**, **number of training epochs**, **weight_decay** again with the objective to maximize average f1_macro. The selected hyperparameters were:
 
 |Hyperparameters          |value          |
 |------------------------ |-------------- |
@@ -96,9 +98,11 @@ The manual inspection of false-positives and false-negatives from the baseline m
 Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors, followed by general model limitation(23.2%) and potentially incorrect reference labels(17.4%). Notably, 15 of the 16 cases classified as general model limitation were false positives. 
 
 # Future Improvement
-Ensemble models: The confusion matrices for the two baseline models SVM and LR show something quite interesting. With SVM more negative reviews were incorrectly classifies as positive, while with LR more positive reviews were classified as negative. Although both models use the same TF-IDF feature-extraction approach, in order to minimize the loss function they learned different coefficients, interceps and decision boundary. So a combination of both via soft voting might improve the metrics we examined earlier. 
+ # Ensemble models
+The LR and Linear SVM classifiers exhibited different error distributions. While SVM generated more false positives, LR produced more false negatives. Although both models used TF-IDF character n-gram representations and identicall class weights, they employed different selected feature configuration, resulting in different learned decision boundaries. Hence a potential direction for further investigation on the baseline is ensemble learning. An initial experiment could measure the overlap between the misclassified examples to determine whether the models make siffuciently complementary errors. Then probability calibration and soft voting could be explored in order to improve the classification performance. 
 
-Also during the EDA it was noticed that the emoji usage is more frequently in a combination with negative negation, so maybe Emoji-Aware TF-IDF could be examined. 
+ # Emoji-Aware Feature Engineering 
+EDA suggesed, that the emoji usage is more frequently in a combination with negative negation, so maybe Emoji-Aware TF-IDF could be examined as possible extension.
 
 
 # Licence 
