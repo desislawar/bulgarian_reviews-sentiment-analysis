@@ -66,39 +66,25 @@ Fine-tuning was performed using Pytorch. Here a different set of hyperparameters
 
 Class specific results: 
 
-|model          |LR     |       |SVM    |       |
---------------------------|-------|-------|-------|-------|
-| Class                   |0      |1      |0      |1      |
-| Precision               |0.8328 |0.9573 |0.8607 |0.9548 |
-| Recall                  |0.8378 |0.9573 |0.8201 |0.9663 | 
-| F1                      |0.8353 |0.9580 |0.8399 |0.9605 |
+|model                    |LR     |       |SVM    |       | mDeBERTa-v3|         |
+--------------------------|-------|-------|-------|-------|------------|---------|        
+| Class                   |0      |1      |0      |1      |0           |1        |
+| Precision               |0.8328 |0.9573 |0.8607 |0.9548 |0.9327      |0.9647   |
+| Recall                  |0.8378 |0.9573 |0.8201 |0.9663 |0.8584      |0.9843   |
+| F1                      |0.8353 |0.9580 |0.8399 |0.9605 |0.8940      |0.9744   |
 
-
-Confusion matrices for both baselines:
+Confusion matrices 
 
 1. LR
 <img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/98003a50-d851-45fe-86f7-6cf9981b400e" />
 
-
 2. SVM
 <img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/a3254a6f-e7ec-489c-bcdc-4c9dd7f23d17" />
 
-The overall accuracy for both baseline models exceeded 93% but the breakdown by class revealed the stark performance disparity between the two classes. This underlines the importance of class-specific metrics and macro-f1 when handling class imbalance data. Of course, there are specific techniques that could tackle such obstacles but given the colorful language used by users in movie reviews, a cautious and well-thought through approach is advised when applying methods to address class imbalance problems. :) 
-
-## Transformer Results 
-
-
-Class specific results: 
-
-|Metric / Class           |   0   |   1   |
---------------------------|-------|-------|
-| Precision               |0.9327 |0.9647 |
-| Recall                  |0.8584 |0.9843 |
-| F1                      |0.8940 |0.9744 |
-
-Confusion matrix:
-
+3. mDeBERTa - v3
 <img width="569" height="455" alt="image" src="https://github.com/user-attachments/assets/cdee090d-a1ed-4353-90bd-78d691b29903" />
+
+The overall accuracy for both baseline models exceeded 93% but the breakdown by class revealed the stark performance disparity between the two classes. This underlines the importance of class-specific metrics and macro-f1 when handling class imbalance data. Of course, there are specific techniques that could tackle such obstacles but given the colorful language used by users in movie reviews, a cautious and well-thought through approach is advised when applying methods to address class imbalance problems. :) 
 
 # Error Analysis
 
