@@ -91,6 +91,11 @@ Confusion matrices
 
 The overall accuracy for both baseline models exceeded 93% but the breakdown by class revealed the stark performance disparity between the two classes. This underlines the importance of class-specific metrics and macro-f1 when handling class imbalance data. Of course, there are specific techniques that could tackle such obstacles but given the colorful language used by users in movie reviews, a cautious and well-thought through approach is advised when applying methods to address class imbalance problems. :) 
 
+# Statistical Comparison 
+To quantify uncertainty in model performance differences, a paired nonparametric bootstrap analysis was conducted using 2,000 resamples of the held-out test set. From the experiment it was observed that mDeBERTa outperformed both LR and Linear SVM, while LR and SVM achieved similar performance with confidence interfvals for their differences including zero(see the figure below). 
+
+<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/01f68f21-d9bb-4adf-838d-eb2f704c81fe" />
+
 # Error Analysis
 
 The manual inspection of false-positives and false-negatives from the baseline models shed light to the limitations of such feature extraction method - the context blindness. This is a known limitation of the TF-IDF features. 
