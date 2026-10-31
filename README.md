@@ -58,7 +58,7 @@ Fine-tuning was performed using Pytorch. The configuration included tuning the *
 | **num_train_epochs**    |3.0            |
 | **weight decay**        |0.01           |
 
-# Experimental Results(from the testing fold)
+# Experimental Results(from the testing set)
 
 ## Baseline 
 
@@ -103,7 +103,7 @@ The manual inspection of false-positives and false-negatives from the baseline m
 Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors, followed by general model limitation(23.2%) and potentially incorrect reference labels(17.4%). Notably, 15 of the 16 cases classified as general model limitation were false positives. 
 
 # Temperature scaling on the transformer model 
-It was observed that the transformer model was especially confident in the predictions of the positive class - with 99.6 mean confidence to accuracy of 95.9 and therefore temperature scaling was performed as additional experiment to examine whether the gap betwen accuracy and confidence could be narrowed. The optimal choice for T in order to minimize the log loss function was 1.9166. The table below contains the results from the experiment: 
+It was observed that the transformer model was especially confident in the predictions of the positive class - with 99.6 mean confidence to accuracy of 95.9 and therefore temperature scaling was performed on the validation set as additional experiment to examine whether the gap betwen accuracy and confidence could be narrowed. The optimal choice for T in order to minimize the log loss function was 1.9166. The table below contains the results from the experiment: 
 
 |Metric         |Before calibration  |After calibration  |
 |---------------|--------------------|-------------------|
