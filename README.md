@@ -114,7 +114,9 @@ It was observed that the transformer model was especially confident in the predi
 |Log loss       |              0.2467|             0.1495|
 |Mean Confidence|              0.9963|             0.9783|
 
-![Uploading image.png…]()
+
+<img width="613" height="547" alt="image" src="https://github.com/user-attachments/assets/05e7ed9c-ccfb-4222-a62e-4843f964c649" />
+
 
 # Future Improvement
 1. Ensemble models
