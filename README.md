@@ -103,9 +103,16 @@ The manual inspection of false-positives and false-negatives from the baseline m
 Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors, followed by general model limitation(23.2%) and potentially incorrect reference labels(17.4%). Notably, 15 of the 16 cases classified as general model limitation were false positives. 
 
 # Temperature scaling on the transformer model 
-It was observed that the transformer model was especially confident in the predictions of the positive class - with 99.6 mean confidence to accuracy of 95.9 and therefore temperature scaling was performed as additional experiment to examine whether the gap betwen accuracy and confidence could be narrowed. The table below contains the results from the experiment: 
+It was observed that the transformer model was especially confident in the predictions of the positive class - with 99.6 mean confidence to accuracy of 95.9 and therefore temperature scaling was performed as additional experiment to examine whether the gap betwen accuracy and confidence could be narrowed. The optimal choice for T in order to minimize the log loss function was 1.9166. The table below contains the results from the experiment: 
 
-
+|Metric         |Before calibration  |After calibration  |
+|---------------|--------------------|-------------------|
+|Accuracy       |              0.9588|             0.9588|
+|Macro-F1       |              0.9342|             0.9342|
+|ECE            |              0.0393|             0.0218|
+|Brier score    |              0.0403|             0.0374|
+|Log loss       |              0.2467|             0.1495|
+|Mean Confidence|              0.9963|             0.9783|
 
 # Future Improvement
 1. Ensemble models
