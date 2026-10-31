@@ -102,6 +102,11 @@ The manual inspection of false-positives and false-negatives from the baseline m
 
 Since the errors from the transformer moder were only 69, this allowed manual review for each error. The nature of the error was subjectively categorized. According to the results the predominant categories were mixed sentiment and insufficient context accounting for 53.6% of the errors, followed by general model limitation(23.2%) and potentially incorrect reference labels(17.4%). Notably, 15 of the 16 cases classified as general model limitation were false positives. 
 
+# Temperature scaling on the transformer model 
+It was observed that the transformer model was especially confident in the predictions of the positive class - with 99.6 mean confidence to accuracy of 95.9 and therefore temperature scaling was performed as additional experiment to examine whether the gap betwen accuracy and confidence could be narrowed. The table below contains the results from the experiment: 
+
+
+
 # Future Improvement
 1. Ensemble models
 The LR and Linear SVM classifiers exhibited different error distributions. While SVM generated more false positives, LR produced more false negatives. Although both models used TF-IDF character n-gram representations and identicall class weights, they employed different selected feature configuration, resulting in different learned decision boundaries. Hence a potential direction for further investigation on the baseline is ensemble learning. An initial experiment could measure the overlap between the misclassified examples to determine whether the models make siffuciently complementary errors. Then probability calibration and soft voting could be explored in order to improve the classification performance. 
