@@ -114,6 +114,8 @@ It was observed that the transformer model was especially confident in the predi
 |Log loss       |              0.2467|             0.1495|
 |Mean Confidence|              0.9963|             0.9783|
 
+![Uploading image.png…]()
+
 # Future Improvement
 1. Ensemble models
 The LR and Linear SVM classifiers exhibited different error distributions. While SVM generated more false positives, LR produced more false negatives. Although both models used TF-IDF character n-gram representations and identicall class weights, they employed different selected feature configuration, resulting in different learned decision boundaries. Hence a potential direction for further investigation on the baseline is ensemble learning. An initial experiment could measure the overlap between the misclassified examples to determine whether the models make siffuciently complementary errors. Then probability calibration and soft voting could be explored in order to improve the classification performance. 
